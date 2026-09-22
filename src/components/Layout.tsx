@@ -104,18 +104,18 @@ export function Layout({ children, currentPath, onNavigate }: LayoutProps) {
   );
 
   return (
-    <div className="min-h-screen bg-base flex">
+    <div className="min-h-screen bg-base flex items-stretch">
       {/* Desktop Sidebar */}
       <aside
         className={cn(
-          'fixed lg:relative z-50 h-screen bg-secondary border-r border-c flex flex-col transition-all duration-300',
+          'fixed lg:sticky lg:top-0 z-50 h-screen shrink-0 self-start bg-secondary border-r border-c flex flex-col transition-all duration-300',
           sidebarOpen ? 'w-64' : 'w-0 lg:w-20',
           mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         )}
         style={{ overflow: sidebarOpen ? 'visible' : 'hidden' }}
       >
         {sidebarOpen ? <SidebarContent /> : (
-          <div className="flex flex-col items-center py-5 h-full">
+          <div className="flex flex-col items-center py-5 h-screen overflow-y-auto w-full">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center glow-accent mb-4">
               <Shield className="w-5 h-5 text-white" />
             </div>

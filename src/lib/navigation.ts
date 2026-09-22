@@ -9,8 +9,6 @@ export interface NavItem {
 }
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: 'Home', path: '/', icon: HomeIcon, group: 'main' },
-  { label: 'About', path: '/about', icon: InfoIcon, group: 'main' },
   { label: 'Dashboard', path: '/dashboard', icon: LayoutDashboardIcon, group: 'main' },
   { label: 'Live Monitoring', path: '/monitoring', icon: ActivityIcon, group: 'monitoring' },
   { label: 'AI Threat Detection', path: '/threat-detection', icon: BrainIcon, group: 'ai' },
@@ -31,8 +29,6 @@ export const NAV_ITEMS: NavItem[] = [
 ];
 
 import {
-  Home as HomeIcon,
-  Info as InfoIcon,
   LayoutDashboard as LayoutDashboardIcon,
   Activity as ActivityIcon,
   Brain as BrainIcon,
