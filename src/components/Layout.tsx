@@ -39,7 +39,7 @@ export function Layout({ children, currentPath, onNavigate }: LayoutProps) {
   const SidebarContent = () => (
     <>
       <div className="flex items-center gap-3 px-5 py-5 border-b border-c">
-        <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center glow-accent">
+        <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-lime-400 to-green-600 flex items-center justify-center glow-accent">
           <Shield className="w-5 h-5 text-white" />
         </div>
         <div>
@@ -77,7 +77,7 @@ export function Layout({ children, currentPath, onNavigate }: LayoutProps) {
                   >
                     <Icon className="w-[18px] h-[18px] flex-shrink-0" />
                     <span className="truncate">{item.label}</span>
-                    {active && <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 ml-auto pulse-dot" />}
+                    {active && <span className="w-1.5 h-1.5 rounded-full bg-lime-400 ml-auto pulse-dot" />}
                   </button>
                 );
               })}
@@ -88,7 +88,7 @@ export function Layout({ children, currentPath, onNavigate }: LayoutProps) {
 
       <div className="border-t border-c p-4">
         <div className="flex items-center gap-3 p-2 rounded-xl bg-tertiary">
-          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-white font-semibold text-sm flex-shrink-0">
+          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-lime-400 to-green-600 flex items-center justify-center text-white font-semibold text-sm flex-shrink-0">
             {profile?.full_name?.[0]?.toUpperCase() || user?.email?.[0]?.toUpperCase() || 'U'}
           </div>
           <div className="flex-1 min-w-0">
@@ -116,7 +116,7 @@ export function Layout({ children, currentPath, onNavigate }: LayoutProps) {
       >
         {sidebarOpen ? <SidebarContent /> : (
           <div className="flex flex-col items-center py-5 h-screen overflow-y-auto w-full">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center glow-accent mb-4">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-lime-400 to-green-600 flex items-center justify-center glow-accent mb-4">
               <Shield className="w-5 h-5 text-white" />
             </div>
             {NAV_ITEMS.map((item) => {
@@ -175,7 +175,7 @@ export function Layout({ children, currentPath, onNavigate }: LayoutProps) {
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
                   className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-hover-c transition-colors"
                 >
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-white font-semibold text-xs">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-lime-400 to-green-600 flex items-center justify-center text-white font-semibold text-xs">
                     {profile?.full_name?.[0]?.toUpperCase() || user?.email?.[0]?.toUpperCase() || 'U'}
                   </div>
                   <ChevronDown className="w-4 h-4 text-m" />

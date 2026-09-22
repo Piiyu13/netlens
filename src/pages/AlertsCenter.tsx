@@ -75,7 +75,7 @@ export function AlertsCenter() {
         <StatCard label="Critical Alerts" value={stats.critical} icon={<AlertTriangle className="w-5 h-5" />} color="#ef4444" />
         <StatCard label="High Alerts" value={stats.high} icon={<AlertTriangle className="w-5 h-5" />} color="#f97316" />
         <StatCard label="Medium Alerts" value={stats.medium} icon={<AlertTriangle className="w-5 h-5" />} color="#eab308" />
-        <StatCard label="Open Alerts" value={stats.open} icon={<Clock className="w-5 h-5" />} color="#00d9ff" />
+        <StatCard label="Open Alerts" value={stats.open} icon={<Clock className="w-5 h-5" />} color="#a3e635" />
       </div>
 
       <div className="grid lg:grid-cols-3 gap-6">

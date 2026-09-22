@@ -5,25 +5,25 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #0a0e1a;
-  --bg-secondary: #0f1525;
-  --bg-tertiary: #161d30;
-  --bg-card: #131a2c;
-  --bg-hover: #1a2238;
-  --border: #1e2a45;
-  --border-light: #2a3858;
+  --bg-primary: #071026;
+  --bg-secondary: #0b1832;
+  --bg-tertiary: #12234d;
+  --bg-card: #0e1c3a;
+  --bg-hover: #16294f;
+  --border: #1e3a63;
+  --border-light: #2c5282;
   --text-primary: #e8edf7;
   --text-secondary: #8b95b0;
   --text-muted: #5a6480;
-  --accent: #00d9ff;
-  --accent-dim: #0099bb;
-  --accent-glow: rgba(0, 217, 255, 0.15);
+  --accent: #a3e635;
+  --accent-dim: #65a30d;
+  --accent-glow: rgba(163, 230, 53, 0.15);
   --success: #22c55e;
   --warning: #eab308;
   --error: #ef4444;
   --critical: #dc2626;
-  --primary: #2563eb;
-  --secondary: #06b6d4;
+  --primary: #16a34a;
+  --secondary: #16a34a;
 }
 
 .light {
@@ -37,9 +37,9 @@
   --text-primary: #1a2238;
   --text-secondary: #5a6480;
   --text-muted: #8b95b0;
-  --accent: #0099bb;
-  --accent-dim: #007a99;
-  --accent-glow: rgba(0, 153, 187, 0.1);
+  --accent: #65a30d;
+  --accent-dim: #4d7c0f;
+  --accent-glow: rgba(101, 163, 13, 0.12);
 }
 
 * {
@@ -141,7 +141,7 @@ body {
 
 .btn-primary {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%);
-  color: #0a0e1a;
+  color: #071026;
   font-weight: 600;
   transition: all 0.2s;
 }
@@ -239,14 +239,14 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--accent) 0%, #6366f1 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, #16a34a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-cyber {
-  background: linear-gradient(135deg, #00d9ff 0%, #00ff88 100%);
+  background: linear-gradient(135deg, #a3e635 0%, #4ade80 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

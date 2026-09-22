@@ -9,7 +9,7 @@ interface LineChartProps {
   strokeWidth?: number;
 }
 
-export function LineChart({ data, color = '#00d9ff', height = 200, labels, gradient = true, strokeWidth = 2 }: LineChartProps) {
+export function LineChart({ data, color = '#a3e635', height = 200, labels, gradient = true, strokeWidth = 2 }: LineChartProps) {
   const width = 800;
   const padding = { top: 20, right: 20, bottom: labels ? 30 : 10, left: 40 };
   const chartW = width - padding.left - padding.right;
@@ -185,7 +185,7 @@ interface SparklineProps {
   width?: number;
 }
 
-export function Sparkline({ data, color = '#00d9ff', height = 40, width = 120 }: SparklineProps) {
+export function Sparkline({ data, color = '#a3e635', height = 40, width = 120 }: SparklineProps) {
   const max = Math.max(...data) || 1;
   const min = Math.min(...data, 0);
   const range = max - min || 1;
@@ -251,7 +251,7 @@ interface GaugeProps {
   size?: number;
 }
 
-export function Gauge({ value, max = 100, label, color = '#00d9ff', size = 120 }: GaugeProps) {
+export function Gauge({ value, max = 100, label, color = '#a3e635', size = 120 }: GaugeProps) {
   const pct = Math.min(value / max, 1);
   const radius = size / 2 - 10;
   const circumference = Math.PI * radius;
@@ -318,12 +318,12 @@ export function AreaChart({ data, height = 200 }: AreaChartProps) {
     <svg viewBox={`0 0 ${width} ${height}`} className="w-full" style={{ height }} preserveAspectRatio="none">
       <defs>
         <linearGradient id="area-in" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#00d9ff" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#00d9ff" stopOpacity="0" />
+          <stop offset="0%" stopColor="#a3e635" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#a3e635" stopOpacity="0" />
         </linearGradient>
         <linearGradient id="area-out" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#a855f7" stopOpacity="0.2" />
-          <stop offset="100%" stopColor="#a855f7" stopOpacity="0" />
+          <stop offset="0%" stopColor="#34d399" stopOpacity="0.2" />
+          <stop offset="100%" stopColor="#34d399" stopOpacity="0" />
         </linearGradient>
       </defs>
       {[0, 0.25, 0.5, 0.75, 1].map((p, i) => (
@@ -332,8 +332,8 @@ export function AreaChart({ data, height = 200 }: AreaChartProps) {
       ))}
       <path d={inData.path} fill="url(#area-in)" />
       <path d={outData.path} fill="url(#area-out)" />
-      <polyline points={inData.points} fill="none" stroke="#00d9ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <polyline points={outData.points} fill="none" stroke="#a855f7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <polyline points={inData.points} fill="none" stroke="#a3e635" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <polyline points={outData.points} fill="none" stroke="#34d399" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }

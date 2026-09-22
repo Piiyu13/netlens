@@ -18,7 +18,7 @@ const variantStyles: Record<string, { bg: string; text: string; dot: string }> =
   safe: { bg: 'rgba(34,197,94,0.15)', text: '#4ade80', dot: '#22c55e' },
   suspicious: { bg: 'rgba(234,179,8,0.15)', text: '#facc15', dot: '#eab308' },
   malicious: { bg: 'rgba(220,38,38,0.15)', text: '#f87171', dot: '#dc2626' },
-  info: { bg: 'rgba(0,217,255,0.15)', text: '#22d3ee', dot: '#00d9ff' },
+  info: { bg: 'rgba(163,230,53,0.15)', text: '#a3e635', dot: '#a3e635' },
 };
 
 export function Badge({ children, variant = 'default', size = 'sm', className, dot }: BadgeProps) {

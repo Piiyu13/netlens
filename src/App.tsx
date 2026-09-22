@@ -39,7 +39,7 @@ function AppContent() {
         <div className="flex flex-col items-center gap-4">
           <div className="relative w-16 h-16">
             <div className="absolute inset-0 rounded-full border-4 border-tertiary" />
-            <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-cyan-400 animate-spin" />
+            <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-lime-400 animate-spin" />
           </div>
           <p className="text-sm text-s">Initializing NetLens...</p>
         </div>

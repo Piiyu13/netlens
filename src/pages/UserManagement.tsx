@@ -28,8 +28,8 @@ const SAMPLE_USERS: UserEntry[] = [
 
 const ROLE_META: Record<Role, { icon: any; color: string; label: string }> = {
   admin: { icon: Crown, color: '#f97316', label: 'Administrator' },
-  analyst: { icon: UserCog, color: '#00d9ff', label: 'Security Analyst' },
-  operator: { icon: Shield, color: '#a855f7', label: 'Operator' },
+  analyst: { icon: UserCog, color: '#a3e635', label: 'Security Analyst' },
+  operator: { icon: Shield, color: '#34d399', label: 'Operator' },
   guest: { icon: Eye, color: '#8b95b0', label: 'Guest (Read Only)' },
 };
 
@@ -93,10 +93,10 @@ export function UserManagement() {
       <PageHeader title="User Management" subtitle="Role-based access control and user management" icon={Users} />
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard label="Total Users" value={stats.total} icon={<Users className="w-5 h-5" />} color="#00d9ff" />
+        <StatCard label="Total Users" value={stats.total} icon={<Users className="w-5 h-5" />} color="#a3e635" />
         <StatCard label="Active" value={stats.active} icon={<Activity className="w-5 h-5" />} color="#22c55e" />
         <StatCard label="Admins" value={stats.admins} icon={<Crown className="w-5 h-5" />} color="#f97316" />
-        <StatCard label="Analysts" value={stats.analysts} icon={<UserCog className="w-5 h-5" />} color="#a855f7" />
+        <StatCard label="Analysts" value={stats.analysts} icon={<UserCog className="w-5 h-5" />} color="#34d399" />
       </div>
 
       <div className="flex gap-2 mb-4">
@@ -128,7 +128,7 @@ export function UserManagement() {
               return (
                 <div key={u.id} className="flex items-center justify-between p-3 rounded-xl bg-tertiary hover:bg-hover-c transition-all">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-white font-semibold">{u.avatar}</div>
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-lime-400 to-green-600 flex items-center justify-center text-white font-semibold">{u.avatar}</div>
                     <div>
                       <div className="text-sm font-medium text-p">{u.name}</div>
                       <div className="text-xs text-m">{u.email}</div>
@@ -187,7 +187,7 @@ export function UserManagement() {
           <div className="space-y-2">
             {ACTIVITY_HISTORY.map((a, i) => (
               <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-tertiary">
-                <div className="w-8 h-8 rounded-lg bg-cyan-500/15 flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 rounded-lg bg-lime-500/15 flex items-center justify-center flex-shrink-0">
                   <Activity className="w-4 h-4 text-accent" />
                 </div>
                 <div className="flex-1">

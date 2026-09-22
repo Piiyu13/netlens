@@ -72,14 +72,14 @@ export function Login({ onSuccess }: { onSuccess: () => void }) {
     <div className="min-h-screen flex items-center justify-center p-6 bg-base relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 grid-pattern opacity-30 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-blue-600/10 pointer-events-none" />
-      <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-blue-600/10 blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-lime-500/5 via-transparent to-green-700/10 pointer-events-none" />
+      <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-lime-500/10 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-green-700/10 blur-3xl pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-md">
         {/* Logo */}
         <div className="flex flex-col items-center mb-6">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center glow-accent mb-3">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-lime-400 to-green-600 flex items-center justify-center glow-accent mb-3">
             <Shield className="w-6 h-6 text-white" />
           </div>
           <div className="text-2xl font-bold text-p">NetLens</div>
@@ -111,7 +111,7 @@ export function Login({ onSuccess }: { onSuccess: () => void }) {
                       maxLength={1}
                       value={digit}
                       onChange={(e) => handleOtpChange(i, e.target.value)}
-                      className="w-12 h-14 text-center text-xl font-bold rounded-xl bg-tertiary border border-c text-p focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20"
+                      className="w-12 h-14 text-center text-xl font-bold rounded-xl bg-tertiary border border-c text-p focus:border-lime-400 focus:outline-none focus:ring-2 focus:ring-lime-400/20"
                     />
                   ))}
                 </div>

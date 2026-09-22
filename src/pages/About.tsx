@@ -23,9 +23,9 @@ export function About() {
 
   const stats = [
     { value: '99.7%', label: 'Detection Accuracy', icon: Target, color: '#22c55e' },
-    { value: '< 50ms', label: 'Response Time', icon: Zap, color: '#00d9ff' },
+    { value: '< 50ms', label: 'Response Time', icon: Zap, color: '#a3e635' },
     { value: '12+', label: 'Attack Types', icon: Shield, color: '#f97316' },
-    { value: '247+', label: 'AI Features', icon: Brain, color: '#a855f7' },
+    { value: '247+', label: 'AI Features', icon: Brain, color: '#34d399' },
   ];
 
   return (
@@ -33,10 +33,10 @@ export function About() {
       <PageHeader title="About NetLens" subtitle="AI-Powered Network Intrusion Detection System" icon={Shield} />
 
       <Card className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-600/5" />
+        <div className="absolute inset-0 bg-gradient-to-br from-lime-500/5 to-green-700/5" />
         <div className="relative">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center glow-accent">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-lime-400 to-green-600 flex items-center justify-center glow-accent">
               <Shield className="w-8 h-8 text-white" />
             </div>
             <div>
@@ -77,7 +77,7 @@ export function About() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((f, i) => (
             <Card key={i} className="hover:border-lc transition-all">
-              <div className="w-10 h-10 rounded-xl bg-cyan-500/15 flex items-center justify-center mb-3">
+              <div className="w-10 h-10 rounded-xl bg-lime-500/15 flex items-center justify-center mb-3">
                 <f.icon className="w-5 h-5 text-accent" />
               </div>
               <h4 className="font-semibold text-p mb-2">{f.title}</h4>

@@ -104,8 +104,8 @@ export function AIThreatDetection() {
   };
 
   const modelBreakdown = [
-    { label: 'Random Forest', value: 94, color: '#00d9ff' },
-    { label: 'LSTM Neural Net', value: 91, color: '#a855f7' },
+    { label: 'Random Forest', value: 94, color: '#a3e635' },
+    { label: 'LSTM Neural Net', value: 91, color: '#34d399' },
     { label: 'Isolation Forest', value: 87, color: '#22c55e' },
     { label: 'XGBoost', value: 95, color: '#f97316' },
   ];
@@ -114,8 +114,8 @@ export function AIThreatDetection() {
     { label: 'Volumetric', value: 45, color: '#ef4444' },
     { label: 'Web Attack', value: 32, color: '#f97316' },
     { label: 'Malware', value: 28, color: '#eab308' },
-    { label: 'Reconnaissance', value: 18, color: '#00d9ff' },
-    { label: 'Credential', value: 15, color: '#a855f7' },
+    { label: 'Reconnaissance', value: 18, color: '#a3e635' },
+    { label: 'Credential', value: 15, color: '#34d399' },
   ];
 
   const severityColor = (s: Severity) => s === 'critical' ? '#ef4444' : s === 'high' ? '#f97316' : s === 'medium' ? '#eab308' : '#22c55e';
@@ -142,7 +142,7 @@ export function AIThreatDetection() {
               <div className="flex flex-col items-center justify-center py-16">
                 <div className="relative w-24 h-24 mb-6">
                   <div className="absolute inset-0 rounded-full border-4 border-tertiary" />
-                  <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-cyan-400 spin-slow" />
+                  <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-lime-400 spin-slow" />
                   <div className="absolute inset-2 rounded-full border-4 border-transparent border-t-purple-500 spin-slow" style={{ animationDirection: 'reverse', animationDuration: '15s' }} />
                   <Brain className="absolute inset-0 m-auto w-10 h-10 text-accent" />
                 </div>
@@ -198,7 +198,7 @@ export function AIThreatDetection() {
                   <ProgressBar value={result.confidence} color={result.confidence > 90 ? '#ef4444' : result.confidence > 75 ? '#eab308' : '#22c55e'} />
                 </div>
 
-                <div className="p-4 rounded-xl bg-gradient-to-br from-cyan-500/5 to-blue-600/5 border border-c mb-6">
+                <div className="p-4 rounded-xl bg-gradient-to-br from-lime-500/5 to-green-700/5 border border-c mb-6">
                   <div className="flex items-center gap-2 mb-2">
                     <Sparkles className="w-4 h-4 text-accent" />
                     <span className="text-sm font-medium text-p">AI Recommendation</span>
@@ -259,7 +259,7 @@ export function AIThreatDetection() {
           <BarChart data={ATTACK_TYPES.slice(0, 8).map((a, i) => ({
             label: a.name.split(' ')[0],
             value: Math.floor(Math.random() * 50 + 10),
-            color: ['#ef4444', '#f97316', '#eab308', '#22c55e', '#00d9ff', '#a855f7', '#06b6d4', '#f472b6'][i],
+            color: ['#ef4444', '#f97316', '#eab308', '#22c55e', '#a3e635', '#34d399', '#16a34a', '#86efac'][i],
           }))} height={200} />
         </Card>
       </div>

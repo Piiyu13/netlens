@@ -35,14 +35,14 @@ export function PacketAnalyzer() {
       { key: 'Dest MAC', value: '00:5e:6f:7a:8b:9c' },
       { key: 'Type', value: 'IPv4 (0x0800)' },
     ]},
-    { name: 'IP', protocol: 'IPv4', color: '#00d9ff', fields: [
+    { name: 'IP', protocol: 'IPv4', color: '#a3e635', fields: [
       { key: 'Version', value: '4' },
       { key: 'Source IP', value: selectedPacket.sourceIp },
       { key: 'Destination IP', value: selectedPacket.destinationIp },
       { key: 'TTL', value: '64' },
       { key: 'Protocol', value: selectedPacket.protocol },
     ]},
-    { name: 'Transport', protocol: selectedPacket.protocol, color: '#a855f7', fields: [
+    { name: 'Transport', protocol: selectedPacket.protocol, color: '#34d399', fields: [
       { key: 'Source Port', value: selectedPacket.port > 1024 ? '54321' : selectedPacket.port.toString() },
       { key: 'Destination Port', value: selectedPacket.port.toString() },
       { key: 'Sequence', value: '0x' + Math.floor(Math.random() * 0xffffffff).toString(16) },

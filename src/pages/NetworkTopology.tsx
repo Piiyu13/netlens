@@ -46,12 +46,12 @@ const LINKS: TopologyLink[] = [
 ];
 
 const TYPE_META: Record<string, { icon: any; color: string }> = {
-  router: { icon: Router, color: '#00d9ff' },
-  switch: { icon: Network, color: '#a855f7' },
+  router: { icon: Router, color: '#a3e635' },
+  switch: { icon: Network, color: '#34d399' },
   server: { icon: Server, color: '#22c55e' },
   client: { icon: Cpu, color: '#8b95b0' },
   firewall: { icon: Shield, color: '#f97316' },
-  cloud: { icon: Cloud, color: '#06b6d4' },
+  cloud: { icon: Cloud, color: '#16a34a' },
 };
 
 const STATUS_COLOR: Record<string, string> = {
@@ -166,7 +166,7 @@ export function NetworkTopology() {
       <PageHeader title="Network Topology" subtitle="Interactive network infrastructure visualization" icon={Network} />
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard label="Total Devices" value={stats.total} icon={<Network className="w-5 h-5" />} color="#00d9ff" />
+        <StatCard label="Total Devices" value={stats.total} icon={<Network className="w-5 h-5" />} color="#a3e635" />
         <StatCard label="Online" value={stats.online} icon={<Wifi className="w-5 h-5" />} color="#22c55e" />
         <StatCard label="Warning" value={stats.warning} icon={<Activity className="w-5 h-5" />} color="#eab308" />
         <StatCard label="Critical" value={stats.critical} icon={<Shield className="w-5 h-5" />} color="#ef4444" />

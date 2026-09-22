@@ -118,7 +118,7 @@ export function LiveMonitoring() {
       <PageHeader title="Live Monitoring" subtitle="Real-time packet capture and network traffic analysis" icon={Activity} />
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard label="Packets Captured" value={totalCaptured.toLocaleString()} icon={<Activity className="w-5 h-5" />} color="#00d9ff" />
+        <StatCard label="Packets Captured" value={totalCaptured.toLocaleString()} icon={<Activity className="w-5 h-5" />} color="#a3e635" />
         <StatCard label="Safe Traffic" value={stats.safe} icon={<Shield className="w-5 h-5" />} color="#22c55e" />
         <StatCard label="Suspicious" value={stats.suspicious} icon={<Eye className="w-5 h-5" />} color="#eab308" />
         <StatCard label="Malicious" value={stats.malicious} icon={<Ban className="w-5 h-5" />} color="#ef4444" />
@@ -132,7 +132,7 @@ export function LiveMonitoring() {
           </div>
           <Badge variant="info" dot>{paused ? 'Paused' : 'Live'}</Badge>
         </div>
-        <LineChart data={rate} color="#00d9ff" height={160} />
+        <LineChart data={rate} color="#a3e635" height={160} />
       </Card>
 
       <Card>

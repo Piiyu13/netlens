@@ -67,7 +67,7 @@ export function DeviceManagement() {
       <PageHeader title="Device Management" subtitle="Network device inventory and management" icon={HardDrive} />
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard label="Total Devices" value={stats.total} icon={<HardDrive className="w-5 h-5" />} color="#00d9ff" />
+        <StatCard label="Total Devices" value={stats.total} icon={<HardDrive className="w-5 h-5" />} color="#a3e635" />
         <StatCard label="Online" value={stats.online} icon={<Activity className="w-5 h-5" />} color="#22c55e" />
         <StatCard label="Warning" value={stats.warning} icon={<Shield className="w-5 h-5" />} color="#eab308" />
         <StatCard label="Critical" value={stats.critical} icon={<Shield className="w-5 h-5" />} color="#ef4444" />

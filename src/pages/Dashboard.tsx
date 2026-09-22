@@ -18,8 +18,8 @@ const GEO_ATTACKS = [
 
 const TOP_DEST_PORTS = [
   { label: '443 (HTTPS)', value: 4200, color: '#22c55e' },
-  { label: '80 (HTTP)', value: 2800, color: '#00d9ff' },
-  { label: '22 (SSH)', value: 1200, color: '#a855f7' },
+  { label: '80 (HTTP)', value: 2800, color: '#a3e635' },
+  { label: '22 (SSH)', value: 1200, color: '#34d399' },
   { label: '3389 (RDP)', value: 890, color: '#f97316' },
   { label: '53 (DNS)', value: 650, color: '#eab308' },
   { label: '445 (SMB)', value: 430, color: '#ef4444' },
@@ -71,9 +71,9 @@ export function Dashboard() {
   }, []);
 
   const protocolUsage = [
-    { label: 'TCP', value: 4200, color: '#00d9ff' },
-    { label: 'UDP', value: 2100, color: '#06b6d4' },
-    { label: 'HTTP', value: 1800, color: '#a855f7' },
+    { label: 'TCP', value: 4200, color: '#a3e635' },
+    { label: 'UDP', value: 2100, color: '#16a34a' },
+    { label: 'HTTP', value: 1800, color: '#34d399' },
     { label: 'HTTPS', value: 3200, color: '#22c55e' },
     { label: 'DNS', value: 950, color: '#eab308' },
     { label: 'SSH', value: 340, color: '#f97316' },
@@ -82,8 +82,8 @@ export function Dashboard() {
   const topSourceIps = [
     { label: '45.227.255.206', value: 342, color: '#ef4444' },
     { label: '185.220.101.45', value: 218, color: '#f97316' },
-    { label: '192.168.1.10', value: 187, color: '#00d9ff' },
-    { label: '10.0.0.5', value: 156, color: '#06b6d4' },
+    { label: '192.168.1.10', value: 187, color: '#a3e635' },
+    { label: '10.0.0.5', value: 156, color: '#16a34a' },
     { label: '203.0.113.50', value: 98, color: '#eab308' },
   ];
 
@@ -98,39 +98,39 @@ export function Dashboard() {
       <PageHeader title="Dashboard" subtitle="Real-time network security overview" icon={Activity} />
 
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
-        <StatCard label="Total Packets" value={stats.packets.toLocaleString()} icon={<Activity className="w-5 h-5" />} color="#00d9ff" trend={{ value: '12%', positive: true }} />
+        <StatCard label="Total Packets" value={stats.packets.toLocaleString()} icon={<Activity className="w-5 h-5" />} color="#a3e635" trend={{ value: '12%', positive: true }} />
         <StatCard label="Safe Traffic" value={stats.safe.toLocaleString()} icon={<ShieldCheck className="w-5 h-5" />} color="#22c55e" trend={{ value: '8%', positive: true }} />
         <StatCard label="Suspicious" value={stats.suspicious.toLocaleString()} icon={<ShieldAlert className="w-5 h-5" />} color="#eab308" trend={{ value: '3%', positive: false }} />
         <StatCard label="Threats Detected" value={stats.malicious.toLocaleString()} icon={<Shield className="w-5 h-5" />} color="#ef4444" trend={{ value: '15%', positive: false }} />
-        <StatCard label="Active Devices" value="47" icon={<Wifi className="w-5 h-5" />} color="#a855f7" sublabel="across 3 subnets" />
+        <StatCard label="Active Devices" value="47" icon={<Wifi className="w-5 h-5" />} color="#34d399" sublabel="across 3 subnets" />
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard label="Total Packets" value="2.4M" icon={<Activity className="w-5 h-5" />} color="#00d9ff" />
+        <StatCard label="Total Packets" value="2.4M" icon={<Activity className="w-5 h-5" />} color="#a3e635" />
         <StatCard label="Safe Traffic" value="94.2%" icon={<ShieldCheck className="w-5 h-5" />} color="#22c55e" />
         <StatCard label="Suspicious" value="4.8%" icon={<ShieldAlert className="w-5 h-5" />} color="#eab308" />
         <StatCard label="Critical Threats" value={stats.malicious} icon={<Shield className="w-5 h-5" />} color="#ef4444" />
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard label="Active Devices" value="47" icon={<HardDrive className="w-5 h-5" />} color="#06b6d4" />
-        <StatCard label="Online Users" value="8" icon={<Users className="w-5 h-5" />} color="#a855f7" />
+        <StatCard label="Active Devices" value="47" icon={<HardDrive className="w-5 h-5" />} color="#16a34a" />
+        <StatCard label="Online Users" value="8" icon={<Users className="w-5 h-5" />} color="#34d399" />
         <StatCard label="Firewall Status" value="Active" icon={<ShieldCheck className="w-5 h-5" />} color="#22c55e" />
-        <StatCard label="AI Confidence" value="97.3%" icon={<Brain className="w-5 h-5" />} color="#00d9ff" />
+        <StatCard label="AI Confidence" value="97.3%" icon={<Brain className="w-5 h-5" />} color="#a3e635" />
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard label="Detection Accuracy" value="99.7%" icon={<Target className="w-5 h-5" />} color="#22c55e" />
-        <StatCard label="Network Health" value="Good" icon={<Wifi className="w-5 h-5" />} color="#06b6d4" />
+        <StatCard label="Network Health" value="Good" icon={<Wifi className="w-5 h-5" />} color="#16a34a" />
         <StatCard label="CPU Usage" value="42%" icon={<Cpu className="w-5 h-5" />} color="#f97316" />
-        <StatCard label="Memory Usage" value="61%" icon={<MemoryStick className="w-5 h-5" />} color="#a855f7" />
+        <StatCard label="Memory Usage" value="61%" icon={<MemoryStick className="w-5 h-5" />} color="#34d399" />
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard label="Disk Usage" value="38%" icon={<HardDrive className="w-5 h-5" />} color="#22c55e" />
-        <StatCard label="Response Time" value="42ms" icon={<Clock className="w-5 h-5" />} color="#00d9ff" />
+        <StatCard label="Response Time" value="42ms" icon={<Clock className="w-5 h-5" />} color="#a3e635" />
         <StatCard label="Packet Loss" value="0.3%" icon={<FlameKindling className="w-5 h-5" />} color="#eab308" />
-        <StatCard label="Latency" value="12ms" icon={<Zap className="w-5 h-5" />} color="#a855f7" />
+        <StatCard label="Latency" value="12ms" icon={<Zap className="w-5 h-5" />} color="#34d399" />
       </div>
 
       <div className="grid lg:grid-cols-3 gap-6">
@@ -142,7 +142,7 @@ export function Dashboard() {
             </div>
             <Badge variant="info" dot>Live</Badge>
           </div>
-          <LineChart data={packetRate} color="#00d9ff" height={220} />
+          <LineChart data={packetRate} color="#a3e635" height={220} />
         </Card>
 
         <Card>
@@ -162,8 +162,8 @@ export function Dashboard() {
               <p className="text-sm text-m">Inbound vs outbound bandwidth</p>
             </div>
             <div className="flex gap-3 text-xs">
-              <span className="flex items-center gap-1.5 text-s"><span className="w-2 h-2 rounded-full bg-cyan-400" /> Inbound</span>
-              <span className="flex items-center gap-1.5 text-s"><span className="w-2 h-2 rounded-full" style={{ background: '#a855f7' }} /> Outbound</span>
+              <span className="flex items-center gap-1.5 text-s"><span className="w-2 h-2 rounded-full bg-lime-400" /> Inbound</span>
+              <span className="flex items-center gap-1.5 text-s"><span className="w-2 h-2 rounded-full" style={{ background: '#34d399' }} /> Outbound</span>
             </div>
           </div>
           <AreaChart data={trafficData} height={220} />
@@ -234,14 +234,14 @@ export function Dashboard() {
                 <span className="text-sm text-s flex items-center gap-2"><Cpu className="w-4 h-4" /> CPU</span>
                 <span className="text-sm font-mono text-p">{cpuData[cpuData.length - 1]}%</span>
               </div>
-              <Sparkline data={cpuData} color="#00d9ff" height={30} width={300} />
+              <Sparkline data={cpuData} color="#a3e635" height={30} width={300} />
             </div>
             <div>
               <div className="flex justify-between mb-2">
                 <span className="text-sm text-s flex items-center gap-2"><MemoryStick className="w-4 h-4" /> Memory</span>
                 <span className="text-sm font-mono text-p">{memData[memData.length - 1]}%</span>
               </div>
-              <Sparkline data={memData} color="#a855f7" height={30} width={300} />
+              <Sparkline data={memData} color="#34d399" height={30} width={300} />
             </div>
             <div>
               <div className="flex justify-between mb-2">

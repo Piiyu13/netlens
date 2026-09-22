@@ -22,8 +22,8 @@ export function Performance() {
   }, []);
 
   const detectionSpeed = [
-    { label: 'ML Model', value: 42, color: '#00d9ff' },
-    { label: 'DL Model', value: 68, color: '#a855f7' },
+    { label: 'ML Model', value: 42, color: '#a3e635' },
+    { label: 'DL Model', value: 68, color: '#34d399' },
     { label: 'Anomaly', value: 35, color: '#22c55e' },
     { label: 'Pattern', value: 28, color: '#f97316' },
     { label: 'Heuristic', value: 15, color: '#eab308' },
@@ -38,8 +38,8 @@ export function Performance() {
       <PageHeader title="Performance" subtitle="System performance and detection metrics" icon={GaugeIcon} />
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard label="CPU Usage" value={`${cpu}%`} icon={<Cpu className="w-5 h-5" />} color="#00d9ff" trend={{ value: '5%', positive: true }} />
-        <StatCard label="RAM Usage" value={`${mem}%`} icon={<MemoryStick className="w-5 h-5" />} color="#a855f7" trend={{ value: '2%', positive: true }} />
+        <StatCard label="CPU Usage" value={`${cpu}%`} icon={<Cpu className="w-5 h-5" />} color="#a3e635" trend={{ value: '5%', positive: true }} />
+        <StatCard label="RAM Usage" value={`${mem}%`} icon={<MemoryStick className="w-5 h-5" />} color="#34d399" trend={{ value: '2%', positive: true }} />
         <StatCard label="Network Usage" value={`${net}%`} icon={<Globe className="w-5 h-5" />} color="#22c55e" />
         <StatCard label="Uptime" value={`${uptime}%`} icon={<CheckCircle className="w-5 h-5" />} color="#22c55e" sublabel="30-day average" />
       </div>
@@ -47,16 +47,16 @@ export function Performance() {
       <div className="grid lg:grid-cols-3 gap-6">
         <Card className="flex flex-col items-center">
           <h3 className="font-semibold text-p mb-4 self-start">CPU Performance</h3>
-          <Gauge value={cpu} label="Processor Load" color="#00d9ff" size={160} />
+          <Gauge value={cpu} label="Processor Load" color="#a3e635" size={160} />
           <div className="w-full mt-4">
-            <Sparkline data={cpuData} color="#00d9ff" height={40} width={280} />
+            <Sparkline data={cpuData} color="#a3e635" height={40} width={280} />
           </div>
         </Card>
         <Card className="flex flex-col items-center">
           <h3 className="font-semibold text-p mb-4 self-start">Memory Usage</h3>
-          <Gauge value={mem} label="RAM Utilization" color="#a855f7" size={160} />
+          <Gauge value={mem} label="RAM Utilization" color="#34d399" size={160} />
           <div className="w-full mt-4">
-            <Sparkline data={memData} color="#a855f7" height={40} width={280} />
+            <Sparkline data={memData} color="#34d399" height={40} width={280} />
           </div>
         </Card>
         <Card className="flex flex-col items-center">
@@ -74,7 +74,7 @@ export function Performance() {
             <h3 className="font-semibold text-p">Network Traffic (24h)</h3>
             <Badge variant="info" dot>Live</Badge>
           </div>
-          <LineChart data={netData} color="#00d9ff" height={220} />
+          <LineChart data={netData} color="#a3e635" height={220} />
         </Card>
 
         <Card>
@@ -97,8 +97,8 @@ export function Performance() {
         <h3 className="font-semibold text-p mb-4">System Health Metrics</h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { label: 'Response Time', value: '42ms', icon: Clock, color: '#00d9ff' },
-            { label: 'Detection Speed', value: '28ms', icon: Zap, color: '#a855f7' },
+            { label: 'Response Time', value: '42ms', icon: Clock, color: '#a3e635' },
+            { label: 'Detection Speed', value: '28ms', icon: Zap, color: '#34d399' },
             { label: 'Accuracy', value: '99.7%', icon: CheckCircle, color: '#22c55e' },
             { label: 'Throughput', value: '1.2 Gbps', icon: Activity, color: '#f97316' },
           ].map((m, i) => (
@@ -121,7 +121,7 @@ export function Performance() {
               <span className="text-sm text-s flex items-center gap-2"><Cpu className="w-4 h-4" /> Model Inference Speed</span>
               <span className="text-sm font-mono text-p">42ms avg</span>
             </div>
-            <ProgressBar value={92} color="#00d9ff" />
+            <ProgressBar value={92} color="#a3e635" />
           </div>
           <div>
             <div className="flex justify-between mb-2">

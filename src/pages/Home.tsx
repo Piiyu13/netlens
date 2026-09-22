@@ -79,7 +79,7 @@ function NetworkAnimation() {
       }
 
       nodes.forEach((n) => {
-        const color = n.type === 'threat' ? '#ef4444' : n.type === 'core' ? '#00d9ff' : '#6366f1';
+        const color = n.type === 'threat' ? '#ef4444' : n.type === 'core' ? '#a3e635' : '#16a34a';
         const size = n.type === 'core' ? 5 : n.type === 'threat' ? 4 : 3;
         ctx.fillStyle = color;
         ctx.shadowBlur = 15;
@@ -219,8 +219,8 @@ function HeroSection({ onNavigate }: { onNavigate: (path: string) => void }) {
 
 function FeaturesSection() {
   const features = [
-    { icon: Activity, title: 'Real-Time Packet Capture', desc: 'Monitor live network traffic with protocol analysis and device discovery', color: '#00d9ff' },
-    { icon: Radar, title: 'Live Traffic Monitoring', desc: 'Continuous surveillance of all network flows with instant anomaly flagging', color: '#06b6d4' },
+    { icon: Activity, title: 'Real-Time Packet Capture', desc: 'Monitor live network traffic with protocol analysis and device discovery', color: '#a3e635' },
+    { icon: Radar, title: 'Live Traffic Monitoring', desc: 'Continuous surveillance of all network flows with instant anomaly flagging', color: '#16a34a' },
     { icon: Globe, title: 'Protocol Analysis', desc: 'Deep inspection of TCP, UDP, HTTP, DNS, SSH and 50+ protocols', color: '#0891b2' },
     { icon: Cpu, title: 'Device Discovery', desc: 'Automatic identification and profiling of all connected network devices', color: '#0e7490' },
   ];
@@ -245,10 +245,10 @@ function FeaturesSection() {
 
 function AISection() {
   const features = [
-    { icon: Brain, title: 'AI Threat Detection', desc: 'Machine Learning classification with deep learning detection models identify known and unknown threats', color: '#00d9ff' },
+    { icon: Brain, title: 'AI Threat Detection', desc: 'Machine Learning classification with deep learning detection models identify known and unknown threats', color: '#a3e635' },
     { icon: AlertTriangle, title: 'Zero-Day Attack Detection', desc: 'Behavioral anomaly detection catches previously unseen attacks without signatures', color: '#f97316' },
-    { icon: TrendingUp, title: 'AI Threat Prediction', desc: 'Predictive models forecast attack patterns and identify at-risk systems before compromise', color: '#a855f7' },
-    { icon: Cpu, title: 'AI Risk Score', desc: 'Dynamic risk scoring aggregates hundreds of signals into a single actionable confidence metric', color: '#06b6d4' },
+    { icon: TrendingUp, title: 'AI Threat Prediction', desc: 'Predictive models forecast attack patterns and identify at-risk systems before compromise', color: '#34d399' },
+    { icon: Cpu, title: 'AI Risk Score', desc: 'Dynamic risk scoring aggregates hundreds of signals into a single actionable confidence metric', color: '#16a34a' },
     { icon: Bot, title: 'AI Security Chatbot', desc: 'Natural language security assistant explains alerts, suggests solutions, and analyzes logs', color: '#22c55e' },
     { icon: Zap, title: 'AI Auto Response', desc: 'Automated threat containment blocks malicious IPs and isolates compromised devices instantly', color: '#ef4444' },
   ];
@@ -305,9 +305,9 @@ function SecuritySection() {
 function StatsSection() {
   const stats = useMemo(() => [
     { value: '99.7%', label: 'Detection Accuracy', icon: Target, color: '#22c55e' },
-    { value: '< 50ms', label: 'Response Time', icon: Zap, color: '#00d9ff' },
+    { value: '< 50ms', label: 'Response Time', icon: Zap, color: '#a3e635' },
     { value: '20+', label: 'Attack Types Detected', icon: Shield, color: '#f97316' },
-    { value: '24/7', label: 'AI Monitoring', icon: Eye, color: '#a855f7' },
+    { value: '24/7', label: 'AI Monitoring', icon: Eye, color: '#34d399' },
   ], []);
 
   return (
@@ -334,9 +334,9 @@ function CTASection({ onNavigate }: { onNavigate: (path: string) => void }) {
   return (
     <section className="py-24 px-6 max-w-7xl mx-auto">
       <div className="card p-12 text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-600/5" />
+        <div className="absolute inset-0 bg-gradient-to-br from-lime-500/5 to-green-700/5" />
         <div className="relative">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center mx-auto mb-6 glow-accent">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-lime-400 to-green-600 flex items-center justify-center mx-auto mb-6 glow-accent">
             <Shield className="w-8 h-8 text-white" />
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-p mb-4">Ready to Secure Your Network?</h2>
@@ -418,7 +418,7 @@ function TerminalAnimation() {
           let color = 'var(--text-secondary)';
           if (line.includes('[ALERT]')) color = '#f87171';
           else if (line.includes('[INFO]')) color = '#4ade80';
-          else if (line.startsWith('$')) color = '#00d9ff';
+          else if (line.startsWith('$')) color = '#a3e635';
           return <div key={i} className="text-xs fade-in" style={{ color }}>{line}</div>;
         })}
         {lines.length < fullLines.length && <span className="blink-cursor text-xs text-accent" />}
@@ -445,7 +445,7 @@ function TestimonialsSection() {
             </div>
             <p className="text-sm text-s leading-relaxed mb-4">"{t.text}"</p>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-white font-semibold">{t.avatar}</div>
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-lime-400 to-green-600 flex items-center justify-center text-white font-semibold">{t.avatar}</div>
               <div><div className="text-sm font-medium text-p">{t.name}</div><div className="text-xs text-m">{t.role}</div></div>
             </div>
           </div>
@@ -457,8 +457,8 @@ function TestimonialsSection() {
 
 function PricingSection({ onNavigate }: { onNavigate: (path: string) => void }) {
   const plans = [
-    { name: 'Starter', price: '$49', period: '/month', desc: 'For small teams getting started with AI security', features: ['Up to 10 devices', 'Real-time monitoring', 'AI threat detection', 'Email alerts', '7-day log retention', 'Community support'], color: '#00d9ff', popular: false },
-    { name: 'Professional', price: '$199', period: '/month', desc: 'For growing security teams', features: ['Up to 50 devices', 'Everything in Starter', 'AI attack prediction', 'AI chat assistant', 'Custom reports', '30-day log retention', 'Priority support'], color: '#a855f7', popular: true },
+    { name: 'Starter', price: '$49', period: '/month', desc: 'For small teams getting started with AI security', features: ['Up to 10 devices', 'Real-time monitoring', 'AI threat detection', 'Email alerts', '7-day log retention', 'Community support'], color: '#a3e635', popular: false },
+    { name: 'Professional', price: '$199', period: '/month', desc: 'For growing security teams', features: ['Up to 50 devices', 'Everything in Starter', 'AI attack prediction', 'AI chat assistant', 'Custom reports', '30-day log retention', 'Priority support'], color: '#34d399', popular: true },
     { name: 'Enterprise', price: 'Custom', period: '', desc: 'For large organizations', features: ['Unlimited devices', 'Everything in Professional', 'Custom AI models', 'API access', 'Unlimited retention', 'Dedicated support', 'SLA guarantee'], color: '#f97316', popular: false },
   ];
 
@@ -470,7 +470,7 @@ function PricingSection({ onNavigate }: { onNavigate: (path: string) => void }) 
         <div className="grid md:grid-cols-3 gap-6">
           {plans.map((plan, i) => (
             <div key={i} className={`card p-6 relative fade-in-up ${plan.popular ? 'border-lc glow-accent' : ''}`} style={{ animationDelay: `${i * 0.1}s` }}>
-              {plan.popular && <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-cyan-400 text-xs font-semibold text-white">Most Popular</div>}
+              {plan.popular && <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-lime-400 text-xs font-semibold text-[#071026]">Most Popular</div>}
               <h3 className="text-lg font-semibold text-p mb-1">{plan.name}</h3>
               <p className="text-sm text-m mb-4">{plan.desc}</p>
               <div className="mb-6"><span className="text-4xl font-bold text-p font-mono">{plan.price}</span><span className="text-sm text-m">{plan.period}</span></div>
@@ -525,7 +525,7 @@ function FooterSection() {
         <div className="grid md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center"><Shield className="w-5 h-5 text-white" /></div>
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-lime-400 to-green-600 flex items-center justify-center"><Shield className="w-5 h-5 text-white" /></div>
               <div className="font-bold text-p text-lg">NetLens</div>
             </div>
             <p className="text-sm text-s leading-relaxed">AI-Powered Network Intrusion Detection System for real-time threat monitoring and predictive cyber defense.</p>
