@@ -8,21 +8,14 @@ import { About } from './pages/About';
 import { Dashboard } from './pages/Dashboard';
 import { LiveMonitoring } from './pages/LiveMonitoring';
 import { AIThreatDetection } from './pages/AIThreatDetection';
-import { AIAttackPrediction } from './pages/AIAttackPrediction';
 import { PacketAnalyzer } from './pages/PacketAnalyzer';
 import { AlertsCenter } from './pages/AlertsCenter';
-import { Reports } from './pages/Reports';
-import { Logs } from './pages/Logs';
 import { Performance } from './pages/Performance';
-import { ThreatIntelligence } from './pages/ThreatIntelligence';
-import { AIChatAssistant } from './pages/AIChatAssistant';
 import { Settings } from './pages/Settings';
-import { Contact } from './pages/Contact';
 import { Login } from './pages/Login';
 import { NetworkTopology } from './pages/NetworkTopology';
 import { DeviceManagement } from './pages/DeviceManagement';
 import { UserManagement } from './pages/UserManagement';
-import { AdminPanel } from './pages/AdminPanel';
 
 function AppContent() {
   const { user, loading } = useAuth();
@@ -64,20 +57,13 @@ function AppContent() {
     '/dashboard': <Dashboard />,
     '/monitoring': <LiveMonitoring />,
     '/threat-detection': <AIThreatDetection />,
-    '/attack-prediction': <AIAttackPrediction />,
     '/packet-analyzer': <PacketAnalyzer />,
     '/alerts': <AlertsCenter />,
-    '/reports': <Reports />,
-    '/logs': <Logs />,
     '/performance': <Performance />,
-    '/threat-intel': <ThreatIntelligence />,
-    '/chat': <AIChatAssistant />,
     '/settings': <Settings />,
-    '/contact': <Contact />,
     '/topology': <NetworkTopology />,
     '/devices': <DeviceManagement />,
     '/users': <UserManagement />,
-    '/admin': <AdminPanel />,
   };
 
   const page = pages[route] || <Home onNavigate={navigate} />;
