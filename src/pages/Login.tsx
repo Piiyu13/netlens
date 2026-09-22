@@ -69,88 +69,36 @@ export function Login({ onSuccess }: { onSuccess: () => void }) {
   };
 
   return (
-    <div className="min-h-screen flex">
-      {/* Left Panel */}
-      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-secondary">
-        <div className="absolute inset-0 grid-pattern opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-600/10" />
+    <div className="min-h-screen flex items-center justify-center p-6 bg-base relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 grid-pattern opacity-30 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-blue-600/10 pointer-events-none" />
+      <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-blue-600/10 blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 flex flex-col justify-center p-12 w-full">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center glow-accent">
-              <Shield className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-p">NetLens</div>
-              <div className="text-sm text-m">AI-Powered NIDS</div>
-            </div>
+      <div className="relative z-10 w-full max-w-md">
+        {/* Logo */}
+        <div className="flex flex-col items-center mb-6">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center glow-accent mb-3">
+            <Shield className="w-6 h-6 text-white" />
           </div>
-
-          <h1 className="text-4xl font-bold text-p mb-4 leading-tight">
-            AI-Powered Network<br />
-            <span className="text-gradient-cyber">Intrusion Detection</span>
-          </h1>
-          <p className="text-lg text-s mb-8 max-w-md">
-            Monitor, detect, predict, and respond to cyber threats in real-time with advanced machine learning.
-          </p>
-
-          <div className="space-y-3">
-            {[
-              'Real-time packet capture & analysis',
-              'AI threat detection with 99.7% accuracy',
-              'Predictive attack analysis & prevention',
-              'Automated threat response & blocking',
-              'AI security assistant for instant insights',
-            ].map((f, i) => (
-              <div key={i} className="flex items-center gap-3 text-s">
-                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                <span>{f}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 flex items-center gap-6">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-p font-mono">99.7%</div>
-              <div className="text-xs text-m">Detection Accuracy</div>
-            </div>
-            <div className="w-px h-12 bg-c" />
-            <div className="text-center">
-              <div className="text-3xl font-bold text-p font-mono">&lt;50ms</div>
-              <div className="text-xs text-m">Response Time</div>
-            </div>
-            <div className="w-px h-12 bg-c" />
-            <div className="text-center">
-              <div className="text-3xl font-bold text-p font-mono">12+</div>
-              <div className="text-xs text-m">Attack Types</div>
-            </div>
-          </div>
+          <div className="text-2xl font-bold text-p">NetLens</div>
+          <div className="text-sm text-m">AI-Powered NIDS</div>
         </div>
-      </div>
 
-      {/* Right Panel - Auth Form */}
-      <div className="flex-1 flex items-center justify-center p-6 bg-base">
-        <div className="w-full max-w-md">
-          <div className="lg:hidden flex items-center gap-3 mb-8 justify-center">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center">
-              <Shield className="w-5 h-5 text-white" />
-            </div>
-            <div className="text-xl font-bold text-p">NetLens</div>
-          </div>
-
-          <div className="card p-8 fade-in-up">
-            <h2 className="text-2xl font-bold text-p mb-2">
-              {mode === 'login' && 'Welcome Back'}
-              {mode === 'register' && 'Create Account'}
-              {mode === 'forgot' && 'Reset Password'}
-              {mode === 'otp' && 'Verify OTP'}
-            </h2>
-            <p className="text-sm text-s mb-6">
-              {mode === 'login' && 'Sign in to your NetLens security dashboard'}
-              {mode === 'register' && 'Set up your AI-powered security platform'}
-              {mode === 'forgot' && 'Enter your email to receive a reset code'}
-              {mode === 'otp' && 'Enter the 6-digit code sent to your email'}
-            </p>
+        <div className="card p-8 fade-in-up">
+          <h2 className="text-2xl font-bold text-p mb-2 text-center">
+            {mode === 'login' && 'Welcome Back'}
+            {mode === 'register' && 'Create Account'}
+            {mode === 'forgot' && 'Reset Password'}
+            {mode === 'otp' && 'Verify OTP'}
+          </h2>
+          <p className="text-sm text-s mb-6 text-center">
+            {mode === 'login' && 'Sign in to your NetLens security dashboard'}
+            {mode === 'register' && 'Set up your AI-powered security platform'}
+            {mode === 'forgot' && 'Enter your email to receive a reset code'}
+            {mode === 'otp' && 'Enter the 6-digit code sent to your email'}
+          </p>
 
             {mode === 'otp' ? (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -246,8 +194,11 @@ export function Login({ onSuccess }: { onSuccess: () => void }) {
                 <span>2FA & OTP verification supported</span>
               </div>
             </div>
-          </div>
         </div>
+
+        <p className="mt-6 text-center text-xs text-m">
+          Protected by AI threat detection · 99.7% accuracy · &lt;50ms response
+        </p>
       </div>
     </div>
   );
