@@ -85,6 +85,23 @@ body {
   .text-s { color: var(--text-secondary); }
   .text-m { color: var(--text-muted); }
   .text-accent { color: var(--accent); }
+  .input-field {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    border-radius: 10px;
+    padding: 10px 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+  }
+  .input-field:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+  .input-field::placeholder {
+    color: var(--text-muted);
+  }
 }
 
 .glass {
@@ -132,26 +149,6 @@ body {
 .btn-primary:hover {
   box-shadow: 0 4px 20px var(--accent-glow);
   transform: translateY(-1px);
-}
-
-.input-field {
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border);
-  color: var(--text-primary);
-  border-radius: 10px;
-  padding: 10px 14px;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  width: 100%;
-}
-
-.input-field:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-glow);
-}
-
-.input-field::placeholder {
-  color: var(--text-muted);
 }
 
 @keyframes pulse-glow {

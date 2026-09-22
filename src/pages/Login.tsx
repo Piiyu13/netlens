@@ -129,7 +129,7 @@ export function Login({ onSuccess }: { onSuccess: () => void }) {
                   <div>
                     <label className="text-sm text-s mb-1.5 block">Full Name</label>
                     <div className="relative">
-                      <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-m" />
+                      <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-m pointer-events-none flex-shrink-0" />
                       <input type="text" required value={fullName} onChange={(e) => setFullName(e.target.value)} className="input-field pl-10" placeholder="John Doe" />
                     </div>
                   </div>
@@ -137,7 +137,7 @@ export function Login({ onSuccess }: { onSuccess: () => void }) {
                 <div>
                   <label className="text-sm text-s mb-1.5 block">Email</label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-m" />
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-m pointer-events-none flex-shrink-0" />
                     <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="input-field pl-10" placeholder="you@example.com" />
                   </div>
                 </div>
@@ -145,9 +145,9 @@ export function Login({ onSuccess }: { onSuccess: () => void }) {
                   <div>
                     <label className="text-sm text-s mb-1.5 block">Password</label>
                     <div className="relative">
-                      <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-m" />
+                      <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-m pointer-events-none flex-shrink-0" />
                       <input type={showPassword ? 'text' : 'password'} required value={password} onChange={(e) => setPassword(e.target.value)} className="input-field pl-10 pr-10" placeholder="••••••••" />
-                      <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-m hover:text-p">
+                      <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-m hover:text-p flex-shrink-0">
                         {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
                     </div>
