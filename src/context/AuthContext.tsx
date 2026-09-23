@@ -1,11 +1,8 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
-import type { Session, User } from '@supabase/supabase-js';
-import { supabase } from '../lib/supabase';
-import type { Profile } from '../types';
+import { authApi, getToken, setToken, type AppUser, type Profile } from '../lib/api';
 
 interface AuthContextType {
-  session: Session | null;
-  user: User | null;
+  user: AppUser | null;
   profile: Profile | null;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
@@ -17,75 +14,65 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [session, setSession] = useState<Session | null>(null);
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<AppUser | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const fetchProfile = async (userId: string) => {
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .maybeSingle();
-    if (!error && data) setProfile(data as Profile);
+  const fetchMe = async () => {
+    if (!getToken()) {
+      setUser(null);
+      setProfile(null);
+      return;
+    }
+    try {
+      const { user: u, profile: p } = await authApi.me();
+      setUser(u);
+      setProfile(p);
+    } catch {
+      setToken(null);
+      setUser(null);
+      setProfile(null);
+    }
   };
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      if (session?.user) {
-        fetchProfile(session.user.id);
-      }
-      setLoading(false);
-    });
-
-    const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      if (session?.user) {
-        (async () => {
-          await fetchProfile(session.user.id);
-        })();
-      } else {
-        setProfile(null);
-      }
-      setLoading(false);
-    });
-
-    return () => authListener.subscription.unsubscribe();
+    fetchMe().finally(() => setLoading(false));
   }, []);
 
   const refreshProfile = async () => {
-    if (user) await fetchProfile(user.id);
+    await fetchMe();
   };
 
   const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    return { error: error?.message ?? null };
+    try {
+      const { access_token } = await authApi.login(email, password);
+      setToken(access_token);
+      await fetchMe();
+      return { error: null };
+    } catch (e) {
+      return { error: e instanceof Error ? e.message : 'Sign in failed' };
+    }
   };
 
   const signUp = async (email: string, password: string, fullName: string) => {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: { data: { full_name: fullName } },
-    });
-    if (error) return { error: error.message };
-    if (data.user) {
-      await supabase.auth.signInWithPassword({ email, password });
+    try {
+      const { access_token } = await authApi.signup(email, password, fullName);
+      setToken(access_token);
+      await fetchMe();
+      return { error: null };
+    } catch (e) {
+      return { error: e instanceof Error ? e.message : 'Sign up failed' };
     }
-    return { error: null };
   };
 
   const signOut = async () => {
-    await supabase.auth.signOut();
+    setToken(null);
+    setUser(null);
     setProfile(null);
   };
 
   return (
-    <AuthContext.Provider value={{ session, user, profile, loading, signIn, signUp, signOut, refreshProfile }}>
+    <AuthContext.Provider value={{ user, profile, loading, signIn, signUp, signOut, refreshProfile }}>
       {children}
     </AuthContext.Provider>
   );

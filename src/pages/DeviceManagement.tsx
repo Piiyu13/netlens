@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { HardDrive, Search, Plus, RefreshCw, Monitor, Server, Cloud, Cpu, MemoryStick, Activity, Shield, Router, Network } from 'lucide-react';
 import { Card, Badge, Button, StatCard, EmptyState } from '../components/ui';
 import { PageHeader } from './Dashboard';
-import { supabase } from '../lib/supabase';
+import { devicesApi } from '../lib/api';
 import { useAuth } from '../context/AuthContext';
 import { formatDate } from '../lib/utils';
 import type { Device } from '../types';
@@ -33,13 +33,24 @@ export function DeviceManagement() {
 
   const loadDevices = useCallback(async () => {
     if (!user) return;
-    const { data, error } = await supabase.from('devices').select('*').order('created_at', { ascending: false });
-    if (!error && data && data.length > 0) {
-      setDevices(data as Device[]);
-    } else if (!error) {
-      const inserts = SAMPLE_DEVICES.map((d) => ({ ...d, user_id: user.id }));
-      const { data: seeded } = await supabase.from('devices').insert(inserts).select();
-      if (seeded) setDevices(seeded as Device[]);
+    try {
+      const data = await devicesApi.list();
+      if (data.length > 0) {
+        setDevices(data);
+      } else {
+        const seeded = await devicesApi.create(SAMPLE_DEVICES.map((d) => ({ ...d })));
+        setDevices(seeded);
+      }
+    } catch {
+      setDevices(
+        SAMPLE_DEVICES.map((d, i) => ({
+          ...d,
+          id: `local-${i}`,
+          user_id: user.id,
+          created_at: new Date().toISOString(),
+          last_seen: new Date().toISOString(),
+        })),
+      );
     }
     setLoading(false);
   }, [user]);

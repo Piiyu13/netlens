@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { Settings as SettingsIcon, Moon, Sun, Mail, MessageSquare, Ban, Brain, Globe, Lock, User, Bell, Shield } from 'lucide-react';
 import { Card, Badge, Button, Toggle } from '../components/ui';
 import { PageHeader } from './Dashboard';
-import { supabase } from '../lib/supabase';
+import { profileApi, settingsApi } from '../lib/api';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import type { UserSettings } from '../types';
@@ -19,8 +19,12 @@ export function Settings() {
 
   const loadSettings = useCallback(async () => {
     if (!user) return;
-    const { data } = await supabase.from('user_settings').select('*').eq('user_id', user.id).maybeSingle();
-    if (data) setSettings(data as UserSettings);
+    try {
+      const data = await settingsApi.get();
+      setSettings(data);
+    } catch {
+      // keep defaults when backend is unreachable
+    }
   }, [user]);
 
   useEffect(() => { loadSettings(); }, [loadSettings]);
@@ -29,14 +33,22 @@ export function Settings() {
   const updateSetting = async (key: keyof UserSettings, value: any) => {
     if (!user || !settings) return;
     setSettings({ ...settings, [key]: value });
-    await supabase.from('user_settings').update({ [key]: value, updated_at: new Date().toISOString() }).eq('user_id', user.id);
+    try {
+      await settingsApi.update({ [key]: value } as Partial<UserSettings>);
+    } catch {
+      // local-only update when backend is unreachable
+    }
   };
 
   const saveProfile = async () => {
     if (!user) return;
     setSaving(true);
-    await supabase.from('profiles').update({ full_name: fullName, phone, organization: org, updated_at: new Date().toISOString() }).eq('id', user.id);
-    await refreshProfile();
+    try {
+      await profileApi.update({ full_name: fullName, phone, organization: org });
+      await refreshProfile();
+    } catch {
+      // local-only when backend is unreachable
+    }
     setSaving(false);
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);

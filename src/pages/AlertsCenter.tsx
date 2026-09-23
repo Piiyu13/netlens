@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { Bell, AlertTriangle, CheckCircle, XCircle, Mail, MessageSquare, Filter, Check, Ban, Clock } from 'lucide-react';
 import { Card, Badge, Button, StatCard, EmptyState } from '../components/ui';
 import { PageHeader } from './Dashboard';
-import { supabase } from '../lib/supabase';
+import { alertsApi } from '../lib/api';
 import { useAuth } from '../context/AuthContext';
 import { ATTACK_TYPES } from '../lib/mockData';
 import { timeAgo } from '../lib/mockData';
@@ -28,18 +28,26 @@ export function AlertsCenter() {
 
   const loadAlerts = useCallback(async () => {
     if (!user) return;
-    const { data, error } = await supabase
-      .from('alerts')
-      .select('*')
-      .order('created_at', { ascending: false })
-      .limit(100);
-    if (!error && data && data.length > 0) {
-      setAlerts(data as Alert[]);
-    } else if (!error) {
-      // Seed sample alerts for new users
-      const inserts = SAMPLE_ALERTS.map((a) => ({ ...a, user_id: user.id }));
-      const { data: seeded } = await supabase.from('alerts').insert(inserts).select();
-      if (seeded) setAlerts(seeded as Alert[]);
+    try {
+      const data = await alertsApi.list(100);
+      if (data.length > 0) {
+        setAlerts(data);
+      } else {
+        // Seed sample alerts for new users
+        const inserts = SAMPLE_ALERTS.map((a) => ({ ...a }));
+        const seeded = await alertsApi.create(inserts);
+        setAlerts(seeded);
+      }
+    } catch {
+      // Backend unreachable — fall back to local sample data
+      setAlerts(
+        SAMPLE_ALERTS.map((a, i) => ({
+          ...a,
+          id: `local-${i}`,
+          user_id: user.id,
+          created_at: new Date().toISOString(),
+        })),
+      );
     }
     setLoading(false);
   }, [user]);
@@ -50,7 +58,11 @@ export function AlertsCenter() {
 
   const updateAlertStatus = async (id: string, status: AlertStatus) => {
     setAlerts((prev) => prev.map((a) => a.id === id ? { ...a, status } : a));
-    await supabase.from('alerts').update({ status }).eq('id', id);
+    try {
+      await alertsApi.updateStatus(id, status);
+    } catch {
+      // local-only update when backend is unreachable
+    }
   };
 
   const filtered = alerts.filter((a) => {
