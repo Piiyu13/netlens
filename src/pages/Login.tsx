@@ -45,7 +45,12 @@ export function Login({ onSuccess }: { onSuccess: () => void }) {
         setError(error);
         setLoading(false);
       } else {
-        onSuccess();
+        setMode('login');
+        setEmail('');
+        setPassword('');
+        setFullName('');
+        setError('Account created successfully. Please sign in.');
+        setLoading(false);
       }
     } else if (mode === 'forgot') {
       setOtpSent(true);
