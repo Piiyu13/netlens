@@ -5,8 +5,8 @@ Replaces Supabase (auth + Postgres + RLS) with a self-hosted FastAPI service.
 ## 1. Start Postgres
 
 ```bash
-# option A: docker
-docker compose up -d db
+# option A: docker (from the repo root — starts db + api + web)
+docker compose up --build
 # option B: local postgres, then:
 createdb netlens
 psql postgresql://netlens:netlens@localhost:5432/netlens -f schema.sql
@@ -30,7 +30,7 @@ Health check: `GET http://localhost:8000/api/health`
 ## 3. Point the frontend at it
 
 ```bash
-# project root .env
+# frontend/.env
 VITE_API_URL=http://localhost:8000
 ```
 

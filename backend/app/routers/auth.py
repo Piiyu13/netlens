@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from .. import models, schemas
@@ -31,7 +32,11 @@ def signup(payload: schemas.SignupIn, db: Session = Depends(get_db)):
         role="analyst",
     )
     db.add(user)
-    db.commit()
+    try:
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(status_code=400, detail="Email already registered")
     db.refresh(user)
     _ensure_settings(db, user.id)
     return {"access_token": create_access_token(str(user.id)), "token_type": "bearer"}

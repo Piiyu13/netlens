@@ -1,6 +1,9 @@
 import type { Alert, Device, UserSettings } from '../types';
 
-const API_URL = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, '') || 'http://localhost:8000';
+// Empty VITE_API_URL means "same origin" (used by the docker nginx proxy).
+// Unset VITE_API_URL falls back to the local backend for `npm run dev`.
+const rawApiUrl = import.meta.env.VITE_API_URL as string | undefined;
+const API_URL = rawApiUrl === undefined ? 'http://localhost:8000' : rawApiUrl.replace(/\/$/, '');
 const TOKEN_KEY = 'netlens_token';
 
 export function getToken(): string | null {
@@ -10,6 +13,26 @@ export function getToken(): string | null {
 export function setToken(token: string | null) {
   if (token) localStorage.setItem(TOKEN_KEY, token);
   else localStorage.removeItem(TOKEN_KEY);
+}
+
+function formatDetail(body: unknown): string | null {
+  const detail = (body as { detail?: unknown }).detail;
+  if (typeof detail === 'string') return detail;
+  if (Array.isArray(detail)) {
+    // FastAPI validation errors: [{ loc: [...], msg: '...' }, ...]
+    const msgs = detail.map((d) => {
+      if (typeof d === 'string') return d;
+      if (d && typeof d === 'object') {
+        const loc = (d as { loc?: unknown }).loc;
+        const msg = (d as { msg?: unknown }).msg;
+        const field = Array.isArray(loc) ? loc.filter((p) => p !== 'body').join('.') : '';
+        if (typeof msg === 'string') return field ? `${field}: ${msg}` : msg;
+      }
+      return JSON.stringify(d);
+    });
+    return msgs.join('; ') || null;
+  }
+  return null;
 }
 
 async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
@@ -25,7 +48,7 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   if (res.status === 204) return undefined as T;
   const body = await res.json().catch(() => ({}));
   if (!res.ok) {
-    throw new Error((body as { detail?: string }).detail || `Request failed (${res.status})`);
+    throw new Error(formatDetail(body) || `Request failed (${res.status})`);
   }
   return body as T;
 }
